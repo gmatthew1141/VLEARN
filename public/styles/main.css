@@ -1,0 +1,402 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #A9C9D7;
+  padding: 3vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Subtitle Size */
+h2 { 
+  font-size: 2rem;
+}
+
+.bodyContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 3vh;
+}
+
+button {
+  border: none;
+  background: none;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+button:hover, .tile:hover {
+  opacity: 0.8;
+}
+
+.left {
+  width: 50%;
+  padding-right: 1.5%;
+}
+
+.right {
+  width: 50%;
+  padding-left: 1.5%;
+}
+
+.subtitleContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.tileContainer {
+  background-color: aliceblue;
+  border-radius: 25px;
+  padding: 2%;
+  height: 74vh;
+  width: 100%;
+  overflow: auto;
+}
+
+.homeButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.homeButton {
+  background-color:  aliceblue;
+  width: 100%;
+  height: 47%;
+  border-radius: 25px;
+  font-size: 2.5rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #A9C9D7;
+  justify-content: space-evenly;
+  font-size: 1.55rem;
+}
+
+.tileItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+}
+
+.testSubjectTile, .trialTile {
+  cursor: pointer;
+}
+
+.verticalLine {
+  width: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background: black;
+}
+
+#txt {
+  font-weight: bold;
+}
+
+.infoContainer {
+  background-color: aliceblue;
+  padding: 2%;
+  border-radius: 25px;
+  text-align: center;
+  height: 74vh;
+  overflow: auto;
+}
+
+.last {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.trialTaskTile {
+  justify-content: space-between;
+  align-items: center;
+}
+
+#addItem{
+  margin-left: 10px;
+}
+
+.listItems {
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 2%;
+  width: 100%;
+  height: 74vh;
+  font-size: 2rem;
+  overflow: auto;
+}
+
+#createTrialListItems {
+  height: auto;
+}
+
+/* Non refined below */
+
+/* CREATE ACCOUNT Page */
+.createContainer {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  margin: 3vh;
+  padding: 3vh;
+  background-color: aliceblue;
+  height: 76vh;
+  border-radius: 25px;
+  overflow: auto;
+  position: relative;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+#txtLeadSpace {
+  margin-left: 5px;
+}
+
+input {
+  width: 25%;
+  margin-left: 5px;
+}
+
+textarea {
+  margin-bottom: 10px;
+  width: 1400px;
+  height: 180px;
+  padding: 5px;
+}
+
+#createUserCancel, #createUserSubmit, #createTrialCancel, #createTrialSave,
+#editUserCancel, #editUserDelete, #editUserSave,
+#editTrialCancel, #editTrialSave, #toTaskBtn,
+#download, #deleteConfirm  {
+  background-color: #e8e8e8;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 1vh;
+  width: 250px;
+  height: 50px;
+}
+
+#leftSelectAll, #rightSelectAll, #leftDeselectAll, #rightDeselectAll {
+  display: block;
+  background-color: #e8e8e8;
+  border: 1px solid black;
+  padding: 0;
+  width: 85px;
+  height: 25px;
+  margin: 1vh;
+  margin-left: 3vh;
+  margin-bottom: 3vh;
+  align-self: left;
+}
+#leftDeselectAll, #rightDeselectAll {
+  display: none;
+}
+#editTrialCancel, #createTrialCancel {
+  position: absolute; 
+  bottom: 0;
+  left: 0;
+  margin: 2%;
+}
+
+#editTrialSave, #createTrialSave {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2%;
+}
+
+#rightArrowBtn, #leftArrowBtn {
+  /* display:block; */
+  position: absolute;
+  /* margin: 3vh; */
+  padding: .5%;
+  border: 2px solid black;
+  border-radius: 10px;
+  align-content: center;
+}
+#leftArrowBtn {
+  left: 0;
+}
+#rightArrowBtn {
+  right: 0;
+}
+
+#createUserSubmit, #createTrialSave, #editUserSave, #editTrialSave, #download {
+  background-color: #4CAF50;
+}
+
+#editUserDelete, #deleteConfirm {
+  background-color: red;
+}
+
+#editUserCancel, #editUserDelete, #editUserSave {
+  width: 150px;
+}
+
+#download, #delete {
+  margin: 3vh;
+}
+
+/* TRIAL REPO Page */
+.repoContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 3vh;
+  height: 76vh;
+}
+
+#assign, #edit, #publish, #delete {
+  cursor: pointer;
+}
+
+/* TS HOME page */
+.trialContainer {
+  background-color: aliceblue;
+  margin: 3vh;  
+  border-radius: 25px;
+  text-align: center;
+  overflow: auto;
+  height: 76vh;
+}
+
+/* ADMIN TS VIEW page */
+#editOtherNotes, #createAccountOtherNotes {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.editInfoContainer {
+  display: none;
+}
+
+.titleAndEditContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+/* ASSIGN TS TO TRIAL page */
+.statusContainer {
+  width: 33.33%;
+  background-color: aliceblue;
+  margin-right: 3%;
+  padding: 2%;
+  border-radius: 25px;
+  text-align: center;
+  overflow: auto;
+  height: 74vh;
+}
+
+.statusContainerTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: end;
+  position: relative;
+}
+
+#lastStatusContainer {
+  margin-right: 0;
+}
+
+.testSubjectsNotAssignedContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputTextContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkboxes label {
+  display: flex;
+  flex-direction: row;
+  padding-right: 10px;
+  white-space: nowrap;
+  align-items: center;
+}
+.checkboxes input {
+  margin-left: 3vh;
+  margin-right: 1vh;
+  width: auto;
+}
+.checkboxes label span {
+  vertical-align: middle;
+}
+
+.webgl-content {
+  display: flex;
+  flex-direction: column;
+  margin: 2vh;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.unContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.unityControls {
+  height: 70vh;
+  padding: 2vh;
+  margin: 3vh;
+  border-radius: 25px;
+  background-color: aliceblue;
+}
+
+#unityContainer {
+  height: 70vh;
+  width: 60vw;
+}
+
+.dateInputInput, .timeInputContainer, .meetingIDInputLine, .trialNumInputLine,
+.dateContainer, .timeContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#setInfoPopup {
+  max-width: 600px;
+}

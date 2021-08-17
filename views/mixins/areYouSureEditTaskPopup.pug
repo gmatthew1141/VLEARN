@@ -1,0 +1,16 @@
+mixin areYouSureEditTaskPopup(name)
+    .modal-dialog(id="areYouSureEditTask"+name)
+        .modal-content
+            .modal-header
+                h4(class="modal-title")= "Warning!"
+                //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                button(id="close" onclick="hidePopup('areYouSureEditTask"+name+"')") X
+            .divLine
+            .modal-body
+                .item
+                    p. 
+                        Are you sure you want to edit this Task? It will be unpublished and removed from all Trials.
+                br
+                .buttonGroup
+                    button(id='cancel' onclick="hidePopup('areYouSureEditTask"+name+"')") No, do NOT edit
+                    button(id='confirmEdit' onclick="editTaskTrial('"+name+"', 'task')") Yes, unpublish and unassign

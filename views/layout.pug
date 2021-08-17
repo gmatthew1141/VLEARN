@@ -1,0 +1,13 @@
+include mixins/head
+
+doctype html
+html(lang = 'en')
+    head
+        block head
+        link(rel="stylesheet" href="styles/footer.css")
+        link(rel="stylesheet" href="styles/head.css")
+        link(rel="stylesheet" href="styles/main.css")
+        link(rel="stylesheet" href="styles/modal.css")
+    body
+        block content
+        include includes/footer

@@ -1,0 +1,50 @@
+extends layout
+include mixins/areYouSureDeleteFilesPopup
+
+block head
+    title Log File Browser
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="scripts/download.js")
+    script(src="scripts/popup.js")
+block content
+    +head("File Browser", true, 0)
+    +areYouSureDeleteFilesPopup()
+    .bodyContainer
+        .listItems
+            for ts in testSubjects
+                p= "Test Subject " + ts.id
+                .checkboxes
+                    for taskDataLog in ts.taskLogs
+                        .checkboxes
+                            label
+                                input#lbl(type='checkbox' name='TaskDataTxt' value= taskDataLog)
+                                span= taskDataLog
+            .buttonGroup
+                button#deleteConfirm(name="delete" onclick="popup('areYouSureDeleteFiles')") Delete
+                button#download(name="download") Download 
+
+    //- Browser Format:
+    //- () represents a checkbox
+    //- Admin should check the files they wish to download/Delete
+    //- Click download
+    //- Files should be zipped and file to be placed in computer file system
+
+    //- Test Subject 1
+    //-     ()TestSubject1Info.txt
+    //-     Pipe Trial
+    //-         ()DataLog1.txt
+    //-         ()DataLog2.txt
+    //-             .
+    //-             .
+    //-             .
+    //-     Disk Trial
+    //-         ()DataLog1.txt
+    //-         ()DataLog2.txt
+    //-             .
+    //-             .
+    //-             .
+    //- Test Subject 2
+    //-     . 
+    //-     . 
+    //-     . 
+    

@@ -1,0 +1,3 @@
+{
+  "ignore": ["logs/*", "trials.json", "users.json"]
+}

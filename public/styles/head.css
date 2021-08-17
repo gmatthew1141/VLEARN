@@ -1,0 +1,49 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    font-size: 1.67rem;
+}
+
+h1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.logoText {
+    text-align: left;
+}
+
+.buttonContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.userText {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#home {
+    margin-right: 1%;   
+}

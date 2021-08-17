@@ -1,0 +1,45 @@
+extends layout
+include mixins/areYouSurePopup
+
+block head
+    title Create Trial
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src = "scripts/createTrial.js")
+    script(src="scripts/popup.js")
+block content
+    +head("Create Trial", true, 0)
+    .createContainer
+        .item
+            p Name:
+            input(type='text' placeholder='Enter Trial Name' name='trial_name' required='')
+        br
+        .item
+            p Preliminary Survey URL:
+            input(type='text' placeholder='Enter Preliminary Survey URL' name='preSurveyURL' required='')
+        br
+        .item
+            p Main Survey URL:
+            input(type='text' placeholder='Enter Main Survey URL' name='mainSurveyURL' required='')
+        br
+        .item
+            p Post Survey URL:
+            input(type='text' placeholder='Enter Post Survey URL' name='postSurveyURL' required='')
+        br
+        .item
+            p Learning Video URL:
+            input(type='text' placeholder='Enter Video URL' name='videoURL' required='')
+        br
+        .item
+            p Published Task:
+            select#publishedTask(name="selectPublishedTask")
+                option(value='0' selected= true) -- Select a Published Task --
+                each pt in publishedTasks
+                    option(value=pt.name) #{pt.name}
+        br
+        .buttonGroup
+            //- TODO: Cancel pop up dialogue - are you sure you want to leave? User won't be created.
+            button(id='createTrialCancel' onclick="popup('areYouSurePopup')") Cancel
+            //- TODO: Submit pop up dialogue - are you sure you want to Create User?
+            //- TODO: onclick save function
+            button(id='createTrialSave') Save
+    +areYouSurePopup("location.href='/trialRepo'")

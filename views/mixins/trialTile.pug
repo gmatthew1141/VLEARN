@@ -1,0 +1,14 @@
+mixin trialTile (name, date, time, meetingID, numTrials, click)
+    .trialTile(id='trialTile' class='tile' onclick=click)
+        .tileItem
+            p(id="txt") Trial Name
+            p= name
+        .verticalLine
+        .tileItem
+            p(id="txt") Appointment
+                p= date + "  " + time
+                p= "Meeting ID: " + meetingID
+        .verticalLine
+        .tileItem
+            p(id="txt") # Trials:
+            p= numTrials

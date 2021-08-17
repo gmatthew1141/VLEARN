@@ -1,0 +1,35 @@
+extends layout
+include mixins/areYouSurePopup
+
+block head
+    title Create Test Subject Account
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src ="scripts/createAccount.js")
+    script(src="scripts/popup.js")
+block content
+    +head('Create Account', true, 0)
+    .bodyContainer
+        .listItems
+            .item
+                p(id='txt') Subject ID:
+                input(type='text' placeholder='#' name='TS#' required='')
+            .item
+                p(id='txt') Username:
+                input(type='text' placeholder='Enter new Username' name='newUsername' required='')
+            .item
+                p(id='txt') Password:
+                input(type='text' placeholder='Enter Password' name='pswd' required='')
+            .item
+                p(id='txt') Verify Password:
+                input(type='text' placeholder='Enter Password Again' name='pswd2' required='')
+            .item
+                .last
+                    p(id='txt') Other Notes:
+                    textarea(id="createAccountOtherNotes")
+            .buttonGroup
+                //- TODO: Cancel pop up dialogue - are you sure you want to leave? User won't be created.
+                button(id='createUserCancel' onclick="popup('areYouSurePopup')") Cancel
+                //- TODO: Submit pop up dialogue - are you sure you want to Create User?
+                //- TODO: onclick save user function
+                button(id='createUserSubmit') Submit
+    +areYouSurePopup("location.href='/home'")

@@ -1,0 +1,36 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href="../styles/footer.css")
+  link(rel="stylesheet" href="../styles/head.css")
+  link(rel="stylesheet" href="../styles/main.css")
+  link(rel="stylesheet" href="../styles/modal.css")
+  meta(charset='utf-8')
+  meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+  title Unity WebGL Player | Tower of Hanoi Task
+  link(rel='shortcut icon' href='TemplateData/favicon.ico')
+  link(rel='stylesheet' href='TemplateData/style.css')
+  script(src='TemplateData/UnityProgress.js')
+  script(src='Build/UnityLoader.js')
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+  script(src='../scripts/startTask.js')
+  script.
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/TowerOfHanoi.json", {onProgress: UnityProgress});
+
+block content
+  +head('Tower of Hanoi Task', false, user.username)
+  .bodyContainer
+    .unContainer
+      .webgl-content
+        #unityContainer
+        .footer
+          .webgl-logo
+          .title Tower of Hanoi Task
+            .fullscreen(onclick='unityInstance.SetFullscreen(1)')
+      .unityControls
+            p CONTROLS:
+            p Left Mouse - Interact with teleporters
+            p Mouse Movement - Move disks while interacting with the tower
+            p Space - Interact with the towers
+            p F2 - Show menu (Admin only)
+            

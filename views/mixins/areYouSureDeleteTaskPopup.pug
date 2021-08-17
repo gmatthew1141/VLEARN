@@ -1,0 +1,15 @@
+mixin areYouSureDeleteTaskPopup(name)
+    .modal-dialog(id="areYouSureDeleteTask"+name)
+        .modal-content
+            .modal-header
+                h4(class="modal-title")= "Warning!"
+                //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                button(id="close" onclick="hidePopup('areYouSureDeleteTask"+name+"')") X
+            .divLine
+            .modal-body
+                .item
+                    p. 
+                        Are you sure you want to DELETE this Task? It will be lost and unrecoverable.
+                .buttonGroup
+                    button(id='cancel' onclick="hidePopup('areYouSureDeleteTask"+name+"')") Cancel
+                    button(id='confirmDelete' onclick="deleteTaskTrial('"+name+"', 'task')") DELETE

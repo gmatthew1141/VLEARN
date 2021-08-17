@@ -1,0 +1,15 @@
+mixin areYouSureDeleteTrialPopup(name)
+    .modal-dialog(id="areYouSureDeleteTrial"+name)
+        .modal-content
+            .modal-header
+                h4(class="modal-title")= "Warning!"
+                //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                button(id="close" onclick="hidePopup('areYouSureDeleteTrial"+name+"')") X
+            .divLine
+            .modal-body
+                .item
+                    p. 
+                        Are you sure you want to DELETE this Trial? All fields will be lost and unrecoverable.
+                .buttonGroup
+                    button(id='cancel' onclick="hidePopup('areYouSureDeleteTrial"+name+"')") Cancel
+                    button(id='confirmDelete' onclick="deleteTaskTrial('"+name+"', 'trial')") DELETE

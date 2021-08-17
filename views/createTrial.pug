@@ -1,0 +1,157 @@
+extends layout
+include mixins/areYouSurePopup
+
+block head
+    title Create Trial
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src = "scripts/createTrial.js")
+    script(src="scripts/popup.js")
+    script. 
+        window.onload = function() { 
+
+                document.getElementById("pipeParam5").style.display = "none";
+        
+
+        }
+        $(function() {
+        $('select[name="selectPublishedTask"]').change(function() {
+            var $this = $(this);
+            //console.log($this.val());
+            if($this.val() == "Disk"){
+                document.getElementById("txtLabel").innerHTML = "DISK PARAMETERS";
+                // remove pipe options
+                document.getElementById("pipeParam1").innerHTML = "";
+                document.getElementById("pipeParam2").style.display = "none";
+                document.getElementById("pipeParam3").innerHTML = "";
+                document.getElementById("pipeParam4").style.display = "none";
+                 document.getElementById("pipeParam5").style.display = "none";
+                // relabel selection
+                document.getElementById("txts1").innerHTML = "Break:";  
+                document.getElementById("txts2").innerHTML = "Disk1";
+                document.getElementById("txts3").innerHTML = "Disk2";
+                document.getElementById("txts4").innerHTML = "Disk3";
+                document.getElementById("txts5").innerHTML = "Disk4";
+
+                document.getElementById("pipe1").style.display = "block";
+                document.getElementById("pipe2").style.display = "block";
+                document.getElementById("pipe3").style.display = "block";
+                document.getElementById("pipe4").style.display = "block";
+            }
+            else if($this.val() == "Tower of Hanoi"){
+                document.getElementById("txtLabel").innerHTML = "Tower of Hanoi PARAMETERS";
+                // remove pipe options
+                document.getElementById("pipeParam1").innerHTML = "";
+                document.getElementById("pipeParam2").style.display = "none";
+                document.getElementById("pipeParam3").innerHTML = "# of rings: ";
+                document.getElementById("pipeParam4").style.display = "none";
+                document.getElementById("pipeParam5").style.display = "block";
+                // relabel selection
+                document.getElementById("txts1").innerHTML = "";  
+                document.getElementById("txts2").innerHTML = "";
+                document.getElementById("txts3").innerHTML = "";
+                document.getElementById("txts4").innerHTML = "";
+                document.getElementById("txts5").innerHTML = "";
+
+                document.getElementById("pipe1").style.display = "none";
+                document.getElementById("pipe2").style.display = "none";
+                document.getElementById("pipe3").style.display = "none";
+                document.getElementById("pipe4").style.display = "none";
+
+            }
+            else{
+                document.getElementById("txtLabel").innerHTML = "PIPE PARAMETERS";
+                // reinsert pipe options
+                document.getElementById("pipeParam1").innerHTML = "Trash Size: ";
+                document.getElementById("pipeParam2").style.display = "block";
+                document.getElementById("pipeParam3").innerHTML = "# Bumps:";
+                document.getElementById("pipeParam4").style.display = "block";
+                document.getElementById("pipeParam5").style.display = "none";
+                // relabel selection
+                document.getElementById("txts1").innerHTML = "Clog:";  
+                document.getElementById("txts2").innerHTML = "Pipe1";
+                document.getElementById("txts3").innerHTML = "Pipe2";
+                document.getElementById("txts4").innerHTML = "Pipe3";
+                document.getElementById("txts5").innerHTML = "Pipe4";
+                
+                document.getElementById("pipe1").style.display = "block";
+                document.getElementById("pipe2").style.display = "block";
+                document.getElementById("pipe3").style.display = "block";
+                document.getElementById("pipe4").style.display = "block";
+            }
+            });
+        });
+        
+        
+block content
+    +head("Create Trial", true, 0)
+    .createContainer
+        .left
+            .listItems(id='createTrialListItems')
+                .item
+                    p(id='txt') Name:
+                    input(type='text' placeholder='Enter Trial Name' name='trial_name' required='' maxLength='20')
+                .item
+                    p(id='txt') Preliminary Survey URL:
+                    input(type='text' placeholder='Enter Preliminary Survey URL' name='preSurveyURL' required='')
+                .item
+                    p(id='txt') Main Survey URL:
+                    input(type='text' placeholder='Enter Main Survey URL' name='mainSurveyURL' required='')
+                .item
+                    p(id='txt') Post Survey URL:
+                    input(type='text' placeholder='Enter Post Survey URL' name='postSurveyURL' required='')
+                .item
+                    p(id='txt') Learning Video URL:
+                    input(type='text' placeholder='Enter Video URL' name='videoURL' required='')
+                button(id='createTrialCancel' onclick="popup('areYouSurePopup')") Cancel
+        .right
+            .listItems(id='createTrialListItems')
+                .item
+                    p(id='txt') Published Task:
+                    
+                    select#publishedTask(name="selectPublishedTask")
+                        option(value='0' selected= true) -- Select a Published Task --
+                        each pt in publishedTasks
+                            option(value=pt.name) #{pt.name}
+                p(id='txtLabel') PIPE PARAMETERS
+                .item
+                    p(id='pipeParam1') Trash Size:
+                    select(name="trashSize" id="pipeParam2")
+                        option(value='small' name='small' id='small' selected= true) Small 
+                        option(value="large" name='small' id='small') Large 
+                .item
+                    p(id='pipeParam3') # Bumps:
+                    input(type='text' name='numBumps' id="pipeParam4" required='')
+                    select(name="numBumps" id="pipeParam5")
+                        option(value='3' name='rings' id='3' selected= true) 3 
+                        option(value='4' name='rings' id='4') 4 
+                        option(value='5' name='rings' id='5') 5 
+                        option(value='6' name='rings' id='6') 6 
+                        option(value='7' name='rings' id='7') 7 
+                        option(value='8' name='rings' id='8') 8 
+                .item
+                    p(id='txts1') Clog:    
+                    p(id='txts2') Pipe1
+                    input(type='checkbox' name='pipe1' id='pipe1')
+                    p(id='txts3') Pipe2
+                    input(type='checkbox' name='pipe2' id='pipe2')
+                    p(id='txts4') Pipe3
+                    input(type='checkbox' name='pipe3' id='pipe3')
+                    p(id='txts5') Pipe4
+                    input(type='checkbox' name='pipe4' id='pipe4')
+                button(id='createTrialSave') Save
+                //- for pt in publishedTasks
+                //-     .item
+                //-         p(id='txt')= pt.name + ":"
+                //-         input(type='text' name=pt.name required='')
+                //- button(id='createTrialSave') Save
+            //- for param in taskParameters
+            //-     .item
+            //-         p(id='txt')= param
+            //-         input(type='text' name=param required='')
+    //- .buttonGroup
+    //-     //- TODO: Cancel pop up dialogue - are you sure you want to leave? User won't be created.
+    //-     button(id='createTrialCancel' onclick="popup('areYouSurePopup')") Cancel
+    //-     //- TODO: Submit pop up dialogue - are you sure you want to Create User?
+    //-     //- TODO: onclick save function
+        button(id='createTrialSave') Save
+    +areYouSurePopup("location.href='/trialRepo'")

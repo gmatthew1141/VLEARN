@@ -1,0 +1,21 @@
+mixin head(title, admin, ts)
+    .headerContainer
+        .logoContainer
+            .logoImg
+                include ../img/LogoHead_vector.svg
+            .logoText
+                p Virtualized Learning
+                p University of MD
+                p Syracuse University
+        h1= title
+        .buttonContainer
+            if admin
+                .userText
+                    p Administrator
+                button(id="home" onclick="location.href='/home'" title="Home")
+                    include ../img/Home_vector.svg
+            else
+                .userText
+                    p= "Test Subject " + ts
+                button(id="home" onclick="location.href='/home'" title="Home")
+                    include ../img/Home_vector.svg

@@ -1,0 +1,15 @@
+extends layout
+include mixins/trialTile
+include mixins/subTitle
+
+block head
+    title Test Subject Home
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src='../scripts/clearCookie.js')
+block content
+    +head('Home', false, subject.id)
+    .bodyContainer
+        .tileContainer
+            +subTitle('TRIALS', false, "")
+            for trial in subject.trials
+                +trialTile(trial.name, trial.date, trial.time, trial.meeting_id, trial.numTrials, "location.href='/trials/"+trial.name+"'")

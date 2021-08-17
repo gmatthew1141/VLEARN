@@ -1,0 +1,20 @@
+extends layout
+include mixins/subTitle
+include mixins/testSubjectTile
+
+block head
+    title Admin Home
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src='../scripts/clearCookie.js')
+block content
+    +head('Home', true, 0)
+    .bodyContainer
+        .left
+            .tileContainer
+                +subTitle('Test Subjects', true, "location.href='/createAccount'", "")
+                for ts in subjects
+                    +testSubjectTile(ts.id, ts.trial.date, ts.trial.time, ts.trial.meeting_id, ts.trial.name, "location.href='/adminTSView/" + ts.id + "'")
+        .right
+            .homeButtonsContainer
+                button(id='TrialRepo' class='homeButton' onclick="location.href='/trialRepo'") Trial & Task Repository
+                button(id='FileBrowser' class='homeButton' onclick="location.href='/fileBrowser'") Download Data

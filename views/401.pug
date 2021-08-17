@@ -1,0 +1,12 @@
+//- Render HTMLs with terminal command pug -w ./ -o ./views/html -P
+doctype html
+html(lang = 'en')
+    head
+        title VLEARN Login
+        link(rel="stylesheet" href="styles/login.css")
+        link(rel="stylesheet" href="styles/footer.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    block content
+        br
+        h1 401 ERROR: UNAUTHORIZED
+        include includes/footer

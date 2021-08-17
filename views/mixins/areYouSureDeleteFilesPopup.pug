@@ -1,0 +1,15 @@
+mixin areYouSureDeleteFilesPopup()
+    .modal-dialog(id="areYouSureDeleteFiles")
+        .modal-content
+            .modal-header
+                h4(class="modal-title")= "Warning!"
+                //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                button(id="close" onclick="hidePopup('areYouSureDeleteFiles')") X
+            .divLine
+            .modal-body
+                .item
+                    p. 
+                        Are you sure you want to DELETE the selected file(s)? It will be lost and unrecoverable.
+                .buttonGroup
+                    button(id='cancel' onclick="hidePopup('areYouSureDeleteFiles')") Cancel
+                    button#deleteFiles() DELETE

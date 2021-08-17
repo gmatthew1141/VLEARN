@@ -1,0 +1,16 @@
+mixin areYouSurePopup(clickYes)
+    .modal-dialog(id="areYouSurePopup")
+            .modal-content
+                .modal-header
+                    h4(class="modal-title")= "Warning!"
+                    //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                    button(id="close" onclick="hidePopup('areYouSurePopup')") X
+                .divLine
+                .modal-body
+                    .item
+                        p. 
+                            Are you sure you want to leave this page? The info will not be saved and no changes will be made.
+                    br
+                    .buttonGroup
+                        button(id='cancel' onclick="hidePopup('areYouSurePopup')") No, do NOT leave page
+                        button(id='saveMeetingInfo' onclick=clickYes) Yes, leave page

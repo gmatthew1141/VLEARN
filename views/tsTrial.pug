@@ -1,0 +1,36 @@
+extends layout
+
+block head
+    title Trial
+    link(rel="stylesheet" href="../styles/footer.css")
+    link(rel="stylesheet" href="../styles/head.css")
+    link(rel="stylesheet" href="../styles/main.css")
+    link(rel="stylesheet" href="../styles/modal.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src = '../scripts/startTrial.js')
+block content
+    +head(trial.name, subject.isAdmin, subject.id, noclick)
+    .bodyContainer
+        .listItems
+            .item
+                p(id='txt') Name:
+                p(id='txtLeadSpace')= trial.name
+            .item
+                p(id='txt') Preliminary Survey URL:
+                a(id='txtLeadSpace' href=trial.preSurveyURL target="_blank")= trial.preSurveyURL
+            .item
+                p(id='txt') Main Survey URL:
+                a(id='txtLeadSpace' href=trial.mainSurveyURL target="_blank")= trial.mainSurveyURL
+            .item
+                p(id='txt') Post Survey URL:
+                a(id='txtLeadSpace' href=trial.postSurveyURL target="_blank")= trial.postSurveyURL
+            .item
+                p(id='txt') Learning Video URL:
+                a(id='txtLeadSpace' href=trial.videoURL target="_blank")= trial.videoURL
+            .item
+                .last
+                    p(id='txt') Published Task:
+                    if subject.isAdmin
+                        button(id='toTaskBtn' onclick="location.href='/tasks/" + trial.task + "?subjectId=" + assignedSubject + "'") Go To Task
+                    else
+                        button(id='toTaskBtn' onclick="location.href='/tasks/" + trial.task + "?subjectId=" + assignedSubject + "'") Click to go complete task

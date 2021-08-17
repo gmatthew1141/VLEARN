@@ -1,0 +1,93 @@
+//- Render HTMLs with terminal command pug -w ./ -o ./views/html -P
+doctype html
+html(lang = 'en')
+    head
+        title Advertisement Plan
+        link(rel="stylesheet" href="styles/adPlan.css")
+        link(rel="stylesheet" href="styles/footer.css")
+    block content
+        article
+            h1 VIRTUALIZED LEARNING
+            h2 RESEARCH: Resumed and Revolutionized
+            .introductionContainer
+                .imgcontainer
+                    include img/Logo_vector.svg
+                .txtIntro
+                    p.
+                        The University of Maryland’s Department of Kinesiology, under Dr. Rodolphe Gentili, is collaborating with Syracuse University's EECS Department, under Dr. Garrett Katz, to study how humans learn to perform motor tasks, a result of goal-directed cognitive activity. Their research originally involved observing test subjects complete a set of different tasks in-person at a physical laboratory. However, due to the COVID-19 pandemic, in-person trials were unable to continue. VLEARN is a tool that lets them resume research, virtually, with test subjects.
+            h2 PURPOSE of VLEARN
+            .txt
+                p. 
+                    VLEARN is a web platform that assists researchers of all technology skill levels to conduct and analyze virtual experiments. Our solution simulates a real-life lab environment in a web browser, allowing researchers to easily conduct experiments involving human-related physical motor precision tasks. Researchers have the ability to observe subjects perform sequences of custom tasks and record meaningful data from each task performed.
+            .leftAndRight
+                .left
+                    h2 KEY FEATURES
+                .right
+                    h2 BROUGHT TO YOU BY:
+            .leftAndRight
+                .left
+                    .txt
+                        h3 Accessability
+                        p. 
+                            Administrators and test subjects can participate from anywhere with an internet connection.
+                    .txt
+                        h3 Users
+                        h4 Administrators
+                        p. 
+                            Administrators can assign desired tasks to each subject and easily retrieve data logs after the completion of each task. Each subject has an identifiable ID which will allow researchers to distinguish their data. Administrators have control over the entire experiment process.
+                        h4 Test Subjects
+                        p. 
+                            Test subjects can easily login into an account and watch the instructional videos, fill out some forms, and complete tasks on their home computer. That’s it. That’s all they need to do.
+                    .txt
+                        h3 Tasks
+                        h4 Unity
+                        p. 
+                            The best engine for running realistic physics applications on a web browser. Unity comes with built-in physics and runs with high performance on most computers.
+                        .video
+                            p SMILE vs. Unity
+                            <iframe id="video" width="420" height="315" src="https://www.youtube.com/embed/bgjpdtUR7zQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen></iframe>
+                        p.
+                            SMILE is a tabletop simulator with a home built physics engine by Professor Katz. We compare it here in order to demonstrate the superior nature of Unity Technology’s game engine developer.
+                        h4 Pipe
+                        .video
+                            p Pipe Task Adventure
+                            <iframe id="video" width="420" height="315" src="https://www.youtube.com/embed/xkrIXPJpNoI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen></iframe>
+                        p.
+                            This video demonstrates the main task researchers wanted virtualized. Test Subjects must “turn off” the flow in the pipe, turn off the LED to the clogged pipe, take off the lid to the clogged pipe, pick up the pliers, precisely remove the “garbage” clogging the pipe without touching it to the sides of the pipe more than a specified amount of times. Then they must follow a logical sequence to finish the task.
+                        h4 Task Creator
+                        .video
+                            p Creating a Simple Task
+                            <iframe id="video" width="420" height="315" src="https://www.youtube.com/embed/9_xC8VTJ56E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen></iframe>
+                        p. 
+                            A platform for researchers to create their own basic tasks. This tool allows researchers to load a variety of predefined objects in order to make new tasks, if needed.
+                    .txt
+                        h3 Data Logging
+                        p. 
+                            A feature in tasks that automatically logs events that happens to an object whenever they occur. This data can then be downloaded from the website and used for research purposes.
+                .right
+                    .txt
+                        .groupMember
+                            p(id="name") Jerome Harmon
+                            p - Data Logging<br>- Unity Unit Tests
+                        .groupMember
+                            p(id="name") Jason Lee
+                            p - Unity Team Pipe<br>- Unity Team Scene Creator
+                        .groupMember   
+                            p(id="name") Ryan Low
+                            p - Data Logging
+                        .groupMember
+                            p(id="name") Trevor Maco
+                            p - Unity Team Pipe<br>- Unity Team Scene Creator
+                        .groupMember
+                            p(id="name") Cameron Perrie
+                            p - Unity Team Disk<br>- Unity Team Scene Creator
+                        .groupMember
+                            p(id="name") Yvanne Seuhou
+                            p -Unity Team Disk<br>- Unity Team Scene Creator
+                        .groupMember
+                            p(id="name") Abigail Snellman
+                            p - Website back end
+                        .groupMember
+                            p(id="name") Kristen Twigg
+                            p - Website front end
+        include includes/footer

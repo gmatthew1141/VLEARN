@@ -1,0 +1,27 @@
+mixin unityTask(taskName, idAdmin)
+    +head(taskName, isAdmin, 0)
+    .bodyContainer
+        .unContainer
+            .webgl-content
+                #unityContainer
+                .footer
+                    .webgl-logo
+                    .title= taskName
+                        .fullscreen(onclick='unityInstance.SetFullscreen(1)')
+        .unityControls
+                p CONTROLS:
+                p w - Forward
+                p a - Left
+                p s - Back
+                p d - Right
+                br
+                p Shift - Down
+                p Space - Up
+                br 
+                p Right Click - Hold Down to rotate Camera
+                p Left Click - click to pick up/drop
+                br
+                p Hold (x,y,z) while holding object to lock movement
+                p x - lock movement on X-axis (Left and Right)
+                p y - lock movement on Y-axis (Up and Down)
+                p z - lock movement on Z-axis (Forward and Back)

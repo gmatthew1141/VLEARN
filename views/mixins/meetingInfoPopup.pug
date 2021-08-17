@@ -1,0 +1,36 @@
+mixin meetingInfoPopup()
+    .modal-dialog(id="setInfoPopup")
+            .modal-content
+                .modal-header
+                    h4(id="meetingInfoHead" class="modal-title")= "Set Meeting Information for Test Subject ID and TrialName"
+                    //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                    button(id="close-meeting") X
+                .divLine
+                .modal-body
+                    .item(id="dateInputLine")
+                        p Date:
+                        .dateContainer(id="dateContainer")
+                            input(id='month' type='number' min=1 max=12 step=1 placeholder='mm' name='date' required='')
+                            p /
+                            input(id='day' type='number' min=1 max=31 step=1 placeholder='dd' name='date' required='')
+                            p /
+                            input(id='year' type='number' min=20 step=1 placeholder='yy' name='date' required='')
+                    .item(id='timeInputLine')
+                        p Start Time:
+                        .timeContainer(id='timeContainer')
+                            input(id='hour' type='number' min=1 max=12 step=1 placeholder='##' name='time' required='')
+                            p :
+                            input(id='minute' type='number' min=00 max=45 step=15 placeholder='##' name='time' required='')
+                            select#AMPM(name="timeAMPM")
+                                option(value='0' selected= true) --
+                                option(value='1') AM
+                                option(value='2') PM
+                    .item(id='meetingIDInputLine')
+                        p Meeting ID:
+                        input(id='meetingid' type='text' placeholder='### ###(#) ####' name='meetingID' required='')
+                    .item(id='trialNumInputLine')
+                        p # times to complete Trial:
+                        input(id="numTrials" type="number" placeholder="#" name="numTrials" required='')
+                    .buttonGroup
+                        //- Allow to save even if all info is not filled in
+                        button#saveMeetingInfo(name='saveMeetingInfo') Finished

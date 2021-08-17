@@ -1,0 +1,61 @@
+extends layout
+include mixins/subTitle
+include mixins/trialTaskTile
+include mixins/areYouSureEditTrialPopup
+include mixins/areYouSureEditTaskPopup
+include mixins/areYouSureDeleteTrialPopup
+include mixins/areYouSureDeleteTaskPopup
+
+block head
+    title Admin Trial Repo
+    link(rel="stylesheet" href="styles/modal.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src ="scripts/popup.js")
+    script(src ="scripts/editTrial.js")
+block content
+    +head('Repository', true, 0)
+    .bodyContainer
+        .left
+            .tileContainer
+                +subTitle('Published', false, "")
+                each trial in publishedTrials
+                    +areYouSureEditTrialPopup(trial)
+                    +areYouSureDeleteTrialPopup(trial)
+                    +trialTaskTile(trial, true, true, "location.href='/assignTStoTrial/" + trial + "'", "popup('areYouSureEditTrial"+trial+"')", "popup('areYouSureDeleteTrial"+trial+"')")
+                each task in publishedTasks
+                    +areYouSureEditTaskPopup(task)
+                    +areYouSureDeleteTaskPopup(task)
+                    +trialTaskTile(task, true, false, "location.href='/tasks/"+task+"'", "popup('areYouSureEditTask"+task+"')", "popup('areYouSureDeleteTask"+task+"')")
+        .right
+            .tileContainer
+                +subTitle('Development', true, "popup('createPopup')")
+                each trial in developmentTrials
+                    +areYouSureDeleteTrialPopup(trial)
+                    +trialTaskTile(trial, false, true,"publishTaskTrial('"+trial+"', 'trial')", "location.href='/trials/edit/"+trial+"'", "popup('areYouSureDeleteTrial"+trial+"')")
+                each task in developmentTasks
+                    +areYouSureDeleteTaskPopup(task)
+                    +trialTaskTile(task, false, false,"publishTaskTrial('"+task+"', 'task')", "location.href='/tasks/edit/"+task+"'", "popup('areYouSureDeleteTask"+task+"')")
+    .modal-dialog(id="createPopup")
+        .modal-content
+            .modal-header
+                h4(class="modal-title") Create
+                button(id="close" onclick="hidePopup('createPopup')") X
+            .divLine
+            .modal-body
+                button(id="task" onclick="popup('newTaskNamePopup')") Task
+                button(id="trial" onclick="location.href='/createTrial'") Trial
+    .modal-dialog(id="newTaskNamePopup")
+        .modal-content
+            .modal-header
+                h4(class="modal-title") Create Task
+                button(id="close" onclick="location.href='/trialRepo'") X
+            .divLine
+            .modal-body
+                .item
+                    p New Task's name:
+                    input(id="newTaskNameInput" type="text")
+                br
+                .buttonGroup
+                    button(id='cancel' onclick="location.href='/trialRepo'") Cancel
+                    //- In function, save selected file and make meetingInfoPopup
+                    button(id='assignConfirm') CREATE

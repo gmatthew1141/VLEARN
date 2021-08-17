@@ -1,0 +1,14 @@
+mixin testSubjectTile (tsID, date, time, meetingID, trialName, click)
+    .testSubjectTile(class='tile' onclick=click)
+        .tileItem
+            p(id="txt") Test Subject ID
+            p= tsID
+        .verticalLine
+        .tileItem
+            p(id="txt") Appointment
+            p= date + "  " + time
+            p= "Meeting ID: " + meetingID
+        .verticalLine
+        .tileItem
+            p(id="txt") Trial
+            p= trialName

@@ -1,0 +1,89 @@
+extends layout
+include mixins/subTitle
+include mixins/trialTile
+include mixins/meetingInfoPopup
+include mixins/areYouSurePopup
+include mixins/areYouSureDeleteUserPopup
+
+block head
+    title Admin Test Subject View
+    link(rel="stylesheet" href="../styles/footer.css")
+    link(rel="stylesheet" href="../styles/head.css")
+    link(rel="stylesheet" href="../styles/main.css")
+    link(rel="stylesheet" href="../styles/modal.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src ="../scripts/popup.js")
+    script(src = "../scripts/editUser.js")
+    script.
+        var id = '#{ts.id}'; 
+        var notes = '#{ts.notes}';
+block content
+    +head("Test Subject " + ts.id, true, 0)
+    .bodyContainer
+        .left
+            .tileContainer
+                +subTitle("Trials", true, "popup('createPopup')")
+                for trial in trials
+                    +trialTile(trial.name, trial.date, trial.time, trial.meeting_id, trial.numTrials, "location.href='/trials/" + trial.name + "?subjectId=" + ts.id + "'")
+        .right
+            .infoContainer
+                .titleAndEditContainer
+                    +subTitle("Information", false, "")
+                    button(id="editItem" onclick="changeToEdit()" title="Edit Test Subject "+ts.id)
+                        include img/Edit_vector_smaller.svg
+                .displayInfoContainer(id="displayContainer", style='display:block;')
+                    .item
+                        p(id='txt') Subject ID:
+                        p(id='txtLeadSpace')= ts.id
+                    .item
+                        p(id='txt') Username:
+                        p(id='txtLeadSpace')= ts.username
+                    .item
+                        p(id='txt') Password: ******
+                    .item
+                        .last
+                            p(id='txt') Other Notes:
+                            p= ts.notes
+                .editInfoContainer(id="editContainer", style='display:none;')
+                    .item
+                        p(id='txt') Subject ID:
+                        p(id='txtLeadSpace')= ts.id
+                    .item
+                        p(id='txt') Username:
+                        input(type='text' placeholder='Enter new Username' name='TSuser' required='' value=ts.username)
+                    .item
+                        p(id='txt') Password:
+                        input(type='text' placeholder='Enter new Password' name='pswd' required='')
+                    .item
+                        p(id='txt') Verify Password:
+                        input(type='text' placeholder='Enter new Password Again' name='pswd2' required='')
+                    .item
+                        .last
+                            p(id='txt') Other Notes:
+                            textarea(id="editOtherNotes")
+                    .buttonGroup
+                        button(id='editUserCancel' onclick="popup('areYouSurePopup')") Cancel
+                        //- TODO: onclick delete popup
+                        +areYouSureDeleteUserPopup()
+                        button#editUserDelete(onclick="popup('areYouSureDeleteUser')") Delete
+                        button#editUserSave() SAVE
+    .modal-dialog(id="createPopup")
+        .modal-content
+            .modal-header
+                h4(class="modal-title") Search Trial
+                button(id="close" onclick="location.href='/adminTSView/" + ts.id + "'") X
+            .divLine
+            .modal-body
+                .item
+                    p Published Trials:
+                    select#publishedTrials(name="selectPublishedTrial")
+                        option(value='0' selected= true) -- Select a Published Trial --
+                        each pt in publishedTrials
+                            option(value=pt) #{pt}
+                br
+                .buttonGroup
+                    button(id='cancel' onclick="popup('areYouSurePopup')") Cancel
+                    //- In function, save selected file and make meetingInfoPopup
+                    button(id='assignConfirm') Assign
+    +areYouSurePopup("location.href='/adminTSView/" + ts.id + "'")
+    +meetingInfoPopup()

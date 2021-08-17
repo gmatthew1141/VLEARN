@@ -1,0 +1,28 @@
+extends layout
+
+block head
+  link(rel="stylesheet" href="../styles/footer.css")
+  link(rel="stylesheet" href="../styles/head.css")
+  link(rel="stylesheet" href="../styles/main.css")
+  link(rel="stylesheet" href="../styles/modal.css")
+  meta(charset='utf-8')
+  meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+  title Unity WebGL Player | Scene Creator
+  link(rel='shortcut icon' href='TemplateData/favicon.ico')
+  link(rel='stylesheet' href='TemplateData/style.css')
+  script(src='TemplateData/UnityProgress.js')
+  script(src='Build/UnityLoader.js')
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+  script(src='../scripts/startTask.js')
+  script.
+    var unityInstance = UnityLoader.instantiate("unityContainer", "Build/SceneCreator.json", {onProgress: UnityProgress});
+
+block content
+  +head('Scene Creator', false, 0)
+  .bodyContainer
+    .webgl-content
+      #unityContainer(style='width: 810px; height: 450px')
+      .footer
+        .webgl-logo
+        .fullscreen(onclick='unityInstance.SetFullscreen(1)')
+        .title Scene Creator

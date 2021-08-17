@@ -1,0 +1,29 @@
+//- Render HTMLs with terminal command pug -w ./ -o ./views/html -P
+doctype html
+html(lang = 'en')
+    head
+        title VLEARN Login
+        link(rel="stylesheet" href="styles/login.css")
+        link(rel="stylesheet" href="styles/footer.css")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+        script(src ="scripts/login.js")
+    body
+        .left
+            h1 VIRTUALIZED LEARNING
+            br
+            .imgcontainer
+                include img/Logo_vector.svg
+            br
+            p(id='loginTxt' name='loginTxt')=blurb
+        .right
+            h2 Login
+            label(for='uname')
+                b Username
+            input(type='text' placeholder='Enter Username' name='username' required='')
+            br
+            label(for='psw')
+                b Password
+            input(type='password' placeholder='Enter Password' name='password' required='')
+            br
+            button(id = 'login') Login
+        include includes/footer

@@ -1,0 +1,56 @@
+extends layout
+include mixins/subTitle
+include mixins/meetingInfoPopup
+//- include mixins/areYouSureDeletePopup
+//- include mixins/areYouSureEditPopup
+
+block head
+    title Assign Test Subjects to Trial
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src ="../scripts/popup.js")
+    link(rel="stylesheet" href="../styles/footer.css")
+    link(rel="stylesheet" href="../styles/head.css")
+    link(rel="stylesheet" href="../styles/main.css")
+    link(rel="stylesheet" href="../styles/modal.css")
+    script.
+        var trial = '#{trial}'; 
+block content
+    //- +head("Assign", true, 0)
+    //- Send the trial!
+    +head("Assign " + trial, true, 0)
+    .bodyContainer
+        .statusContainer
+            .statusContainerTitle
+                +subTitle("Assigned", false, "")
+                button(id="rightArrowBtn" onclick="unassign('"+trial+"')" title="Unassign Test Subjects from Trial: "+trial)
+                    include img/RightArrow_vector.svg
+            button(id="leftSelectAll" onclick="selectAll('assignedtoTrial', 'leftSelectAll', 'leftDeselectAll')" title="Check all Test Subjects") Select All
+            button(id="leftDeselectAll" onclick="deselectAll('assignedtoTrial', 'leftSelectAll', 'leftDeselectAll')" title="Uncheck all Test Subjects") Deselect All
+            //- Send list of subjects assigned to the trial!
+            .checkboxes
+                for subject in assignedtoTrial
+                    label
+                        input#lbl(type='checkbox' name='assignedtoTrial', value = subject)
+                        span= "Test Subject " + subject
+        .statusContainer
+            .titleAndEditContainer
+                +subTitle("Not Assigned", false, "")
+                button(id="leftArrowBtn" onclick="assign('"+trial+"')" title="Assign Test Subjects to Trial: "+trial)
+                    include img/LeftArrow_vector.svg
+            button(id="rightSelectAll" onclick="selectAll('notAssignedtoTrial', 'rightSelectAll', 'rightDeselectAll')" title="Check all Test Subjects") Select All
+            button(id="rightDeselectAll" onclick="deselectAll('notAssignedtoTrial', 'rightSelectAll', 'rightDeselectAll')" title="Uncheck all Test Subjects") Deselect All
+            //- Send list of subjects not assigned to the trial!
+            .checkboxes
+                for subject in notAssignedtoTrial
+                    label
+                        input#lbl(type='checkbox' name='notAssignedtoTrial', value = subject)
+                        span= "Test Subject " + subject
+        .statusContainer(id="lastStatusContainer")
+            +subTitle("Completed", false, "")
+            //- Send list of subjects who have completed the trial!
+            for subject in completedTrial
+                p= "Test Subject " + subject
+    +meetingInfoPopup()
+    //- +areYouSureDeletePopup()
+    //- Only for published trials & tasks
+    //- +areYouSureEditPopup()

@@ -1,0 +1,97 @@
+body {
+    background-color: #A9C9D7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 7vh;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+h2 {
+    text-align: center;
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+h4 {
+    text-align: center;
+    font-size: 3vh;
+    font-style: italic;
+}
+
+.introductionContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 3vh;
+    padding: 1vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.txtIntro, .txt {
+    margin: 3vh;
+    background-color: aliceblue;
+    border-radius: 25px;
+    padding: 2vh;
+    font-size: 3vh;
+    justify-content: center;
+}
+
+.txtIntro {
+    max-width: 75%;
+    margin: 0;
+    margin-left: 2vh;
+    padding: 8vh;
+    padding-left: 1vh;
+    padding-right: 2vh;
+}
+
+.imgcontainer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    align-items: center;
+}
+
+.leftAndRight {
+    display: Flex;
+    flex-direction: row;
+}
+
+.left {
+    width: 80%;
+    margin-right: 0;
+}
+
+.right {
+    width: 20%
+}
+
+.groupMember {
+    display: flex;
+    flex-direction: column;
+}
+
+#name {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

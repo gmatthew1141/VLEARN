@@ -1,0 +1,15 @@
+mixin areYouSureDeleteUserPopup()
+    .modal-dialog(id="areYouSureDeleteUser")
+        .modal-content
+            .modal-header
+                h4(class="modal-title")= "Warning!"
+                //- TODO FUNCTION removes subject from the selected and does not assign them to the trial
+                button(id="close" onclick="hidePopup('areYouSureDeleteUser')") X
+            .divLine
+            .modal-body
+                .item
+                    p. 
+                        Are you sure you want to DELETE this User? It will be lost and unrecoverable.
+                .buttonGroup
+                    button(id='cancel' onclick="hidePopup('areYouSureDeleteUser')") Cancel
+                    button#editUserDeleteConfirm() DELETE

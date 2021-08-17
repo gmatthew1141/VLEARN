@@ -1,0 +1,72 @@
+.modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    z-index: 3;
+    background-color: #e8e8e8;
+    padding: 15px;
+    border: 2px solid black;
+    display: none;
+}
+
+
+.modal-body, .modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-body {
+    flex-direction: column;
+    position: relative;
+}
+
+#task, #trial, #cancel, #saveMeetingInfo, 
+#confirmDelete, #confirmEdit, #assignConfirm,
+#editUserDeleteConfirm, #deleteFiles {
+    padding: 5px;
+    border: 2px solid black;
+    margin-right: 10px;
+    background-color: #ffffff;
+}
+
+#trial {
+    margin-top: 1vh;
+}
+
+#saveMeetingInfo, #assignConfirm {
+    background-color: #4CAF50;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#editUserDeleteConfirm, #deleteFiles, #confirmDelete {
+    background-color: red;
+}
+
+#close, #close-meeting {
+    border: 2px solid black;
+    background-color: red;
+    margin-left: 10px;
+    padding: 5px;
+    justify-content: space-evenly;
+    width: 27px;
+    height: 27px
+}
+
+.divLine {
+    height: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: black;
+}
+
+#newTaskNamePopup {
+    max-width: 600px;
+}
+
+#newTaskNameInput {
+    width: auto;
+}

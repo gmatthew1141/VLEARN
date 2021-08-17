@@ -1,0 +1,66 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+}
+  
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 3vh;
+}
+
+.left {
+  width: 66vw;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  align-items: center;
+}
+
+.imgcontainer {
+  width: 50%;
+}
+
+.right {
+    background-color: #A9C9D7;
+    width: 34vw;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 1vh;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+  
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}

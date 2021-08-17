@@ -1,0 +1,29 @@
+mixin trialTaskTile(name, published, trial, assignLink, editLink, trashLink)
+    .trialTaskTile(class='tile')
+        if trial
+            p= "TRIAL: " + name
+        else
+            p= "TASK: " + name
+        .buttonGroup
+            if published && trial
+                button(id="assign" onclick=assignLink title="Assign/Unassign Test Subjects to Trial")
+                    include ../img/Assign_vector.svg
+            else if published===false
+                //- TODO: onclick move to published trial/task and refresh page
+                button(id="publish", onclick = assignLink title="Publish")
+                    include ../img/Publish_vector.svg
+            if trial
+                //- TODO: on click go to createTrial page with all fields filled in
+                button(id="edit", onclick=editLink title="Edit Trial")
+                    include ../img/Edit_vector.svg
+            else
+                if published===true
+                    button(id="view" onclick=assignLink title="View and Play Task")
+                        include ../img/View_vector.svg
+                //- TODO: on unity file/scene creator to edit a task
+                button(id="edit" onclick=editLink title="Edit Task")
+                    include ../img/Edit_vector.svg
+            if trial===false && (name==="Pipe" || name==="Disk")
+            else
+                button(id="deleteTrialTask" onclick=trashLink title="Delete")
+                    include ../img/Delete_vector.svg
